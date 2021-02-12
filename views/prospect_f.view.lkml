@@ -19,6 +19,7 @@ view: prospect_f {
   dimension: probability {
     type: number
     sql: ${TABLE}.probability ;;
+    value_format: "0.00"
   }
 
   dimension: prospects_id {
