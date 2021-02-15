@@ -144,4 +144,8 @@ view: customer_d {
     type: count
     drill_fields: [first_name, last_name]
   }
+
+  measure: count_customer {
+  type:  count
+  }
 }
