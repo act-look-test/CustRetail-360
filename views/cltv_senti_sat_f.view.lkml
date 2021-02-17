@@ -4,6 +4,7 @@ view: cltv_senti_sat_f {
   dimension: cltv {
     type: number
     sql: ${TABLE}.cltv ;;
+    value_format: "$0.00,,\" M\""
   }
 
   dimension: cust_sat_score {
@@ -41,8 +42,16 @@ view: cltv_senti_sat_f {
     sql:  concat(${TABLE}.first_name,' ',${TABLE}.last_name) ;;
   }
 
+
+
   measure: count {
     type: count
     drill_fields: [first_name, last_name]
   }
+
+  measure: avg_customer_satisfaction {
+    type: average
+    sql: ${cust_sat_score} ;;
+    value_format:"0;(0)"
+    }
 }

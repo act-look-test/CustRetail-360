@@ -32,11 +32,18 @@ explore: customer_sentiment_d {}
 
 explore: next_best_purchase_f {}
 
-explore: order_f {}
-
-explore: payment_type_d {}
-
-explore: product_d {}
+explore: order_f {
+  join : customer_d {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${order_f.customer_id}=${customer_d.customer_id};;
+  }
+ join: product_d  {
+   type :  left_outer
+   relationship: many_to_one
+   sql_on: ${order_f.product_id}=${product_d.product_id}  ;;
+ }
+}
 
 explore: promotion_d {}
 
@@ -51,3 +58,9 @@ explore: prospect_f {
 explore: prospect_master_d {}
 
 explore: store_d {}
+
+explore: customer_product_category_count{}
+
+explore: sql_kpi_constants {}
+explore: Customers_onboarded {}
+explore: basket_size {}

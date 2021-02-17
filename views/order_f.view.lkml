@@ -84,7 +84,10 @@ view: order_f {
     type: string
     sql: ${TABLE}.transaction_type ;;
   }
-
+  measure: Basket_size {
+    type: average
+    sql: ${TABLE}.ordered_qty ;;
+  }
   measure: count {
     type: count
     drill_fields: []
