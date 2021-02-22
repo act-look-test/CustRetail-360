@@ -48,10 +48,28 @@ view: cltv_senti_sat_f {
     type: count
     drill_fields: [first_name, last_name]
   }
+  measure: Overall_LTV {
+    type: average
+    sql:  ${TABLE}.cltv ;;
+    value_format: "0.00,,\" M\""
+  }
 
   measure: avg_customer_satisfaction {
     type: average
     sql: ${cust_sat_score} ;;
     value_format:"0;(0)"
-    }
+  }
+  measure: customer_perception {
+    type: average
+    sql: ${cust_sat_score} ;;
+    value_format:"0;(0)"
+    html:
+    {% if value > 5 %}
+    <p style="background-color: #008000 %">{{ rendered_value }}</p>
+    {% elsif value >4 %}
+    <p style="background-color: #E1AD01 %">{{ rendered_value }}</p>
+    {% else %}
+    <p style="background-color: #FF5821 %">{{ rendered_value }}</p>
+    {% endif %};;
+  }
 }

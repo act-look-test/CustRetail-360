@@ -20,6 +20,12 @@ view: prospect_f {
     type: number
     sql: ${TABLE}.probability ;;
     value_format: "0.00"
+    html:
+    {% if value > 0.50 %}
+    <p style="background-color: #FF5821 %">{{ rendered_value }}</p>
+    {% else %}
+    <p style="background-color: #AEF359 %">{{ rendered_value }}</p>
+    {% endif %};;
   }
 
   dimension: prospects_id {

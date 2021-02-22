@@ -18,7 +18,7 @@ explore: customer_category_d  {
     relationship: many_to_one
     sql_on: ${customer_category_d.customer_id} = ${customer_d.customer_id} ;;
   }
-}
+  }
 
 explore: alldata_integrated_f {}
 
@@ -64,3 +64,4 @@ explore: customer_product_category_count{}
 explore: sql_kpi_constants {}
 explore: Customers_onboarded {}
 explore: basket_size {}
+explore: Loyal_customers {}

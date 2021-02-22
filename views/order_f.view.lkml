@@ -92,4 +92,20 @@ view: order_f {
     type: count
     drill_fields: []
   }
+  # No of Footfalls is Count of customers from order table
+  measure: no_of_footfalls {
+    type:  number
+    sql: COUNT(${TABLE}.customer_id) ;;
+  }
+  measure: no_of_customers {
+    type: count_distinct
+    sql:  ${TABLE}.customer_id;;
+  }
+
+  #No of Footfalls per customer
+measure: no_of_footfalls_per_customer{
+  type: number
+  sql: ${no_of_footfalls}/${no_of_customers} ;;
+}
+
 }
